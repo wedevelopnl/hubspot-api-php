@@ -388,8 +388,9 @@ class DependentFieldDependentField implements ModelInterface, ArrayAccess, \Json
         if ($this->container['field_type'] === null) {
             $invalidProperties[] = "'field_type' can't be null";
         }
-        $allowedValues = $this->getFieldTypeAllowableValues();
-        if (!is_null($this->container['field_type']) && !in_array($this->container['field_type'], $allowedValues, true)) {
+//        $allowedValues = $this->getFieldTypeAllowableValues();
+//        if (!is_null($this->container['field_type']) && !in_array($this->container['field_type'], $allowedValues, true)) {
+        if (!is_null($this->container['field_type'])) {
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'field_type', must be one of '%s'",
                 $this->container['field_type'],
@@ -467,16 +468,16 @@ class DependentFieldDependentField implements ModelInterface, ArrayAccess, \Json
         if (is_null($field_type)) {
             throw new \InvalidArgumentException('non-nullable field_type cannot be null');
         }
-        $allowedValues = $this->getFieldTypeAllowableValues();
-        if (!in_array($field_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'field_type', must be one of '%s'",
-                    $field_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+//        $allowedValues = $this->getFieldTypeAllowableValues();
+//        if (!in_array($field_type, $allowedValues, true)) {
+//            throw new \InvalidArgumentException(
+//                sprintf(
+//                    "Invalid value '%s' for 'field_type', must be one of '%s'",
+//                    $field_type,
+//                    implode("', '", $allowedValues)
+//                )
+//            );
+//        }
         $this->container['field_type'] = $field_type;
 
         return $this;
